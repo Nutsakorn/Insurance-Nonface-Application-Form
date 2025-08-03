@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แบบฟอร์มสำหรับยื่นคำขอเอาประกันชีวิต</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Allianz Blue: #003781 */
+        body {
+            font-family: 'Sarabun', sans-serif;
+            background-color: #f4f6f9;
+        }
+        .form-header {
+            background-color: #003781;
+            color: white;
+        }
+        .form-section {
+            background-color: white;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            padding: 2rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            border: 1px solid #e0e0e0;
+        }
+        .form-question {
+            margin-bottom: 1.75rem;
+        }
+        label {
+            font-size: 1rem;
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        .description {
+            font-size: 0.875rem;
+            color: #666;
+            margin-top: -0.25rem;
+            margin-bottom: 0.75rem;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="number"],
+        select,
+        textarea {
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            padding: 0.75rem;
+            font-size: 1rem;
+            transition: border-color 0.3s, box-shadow 0.3s;
+            background-color: #fff;
+        }
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="tel"]:focus,
+        input[type="number"]:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #0056b3; /* A slightly lighter blue for focus */
+            box-shadow: 0 0 0 3px rgba(0, 55, 129, 0.15);
+        }
+        .radio-option, .checkbox-option {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.75rem;
+            background-color: #f8f9fa;
+            padding: 0.75rem;
+            border-radius: 4px;
+            border: 1px solid #e0e0e0;
+        }
+        input[type="radio"], input[type="checkbox"] {
+            width: 1.25em;
+            height: 1.25em;
+            margin-right: 0.75rem;
+            accent-color: #003781;
+        }
+        .required-star {
+            color: #d93025;
+            margin-left: 4px;
+        }
+        .submit-btn {
+            background-color: #003781;
+            transition: background-color 0.3s;
+        }
+        .submit-btn:hover {
+            background-color: #002b65;
+        }
+        .submit-btn:disabled {
+            background-color: #a0a0a0;
+            cursor: not-allowed;
+        }
+        .hidden-field {
+            display: none;
+        }
+        .error-message {
+            color: #d93025;
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+            display: none; /* Hidden by default */
+        }
+        input.invalid, textarea.invalid, select.invalid {
+            border-color: #d93025;
+        }
+        input.invalid:focus, textarea.invalid:focus, select.invalid:focus {
+            box-shadow: 0 0 0 3px rgba(217, 48, 37, 0.15);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="max-w-4xl mx-auto p-4 md:p-8">
+        <!-- Form Header -->
+        <div class="form-header p-6 rounded-t-lg shadow-lg text-center">
+            <h1 class="text-3xl font-bold mb-2">แบบฟอร์มสำหรับยื่นคำขอเอาประกันชีวิต</h1>
+            <div class="mt-4 pt-4 border-t border-white/20 text-sm">
+                <p>นาย ณัฎฐ์ สาครสินธุ์</p>
+                <p>เลขที่ใบอนุญาต: 6801002237</p>
+            </div>
+        </div>
+
+        <form id="data-form" novalidate>
+            <!-- PDPA Consent Section -->
+            <div class="form-section rounded-t-none">
+                 <h2 class="text-xl font-bold text-gray-800 border-b pb-2 mb-4">ข้อตกลงในการเปิดเผยข้อมูลส่วนบุคคล</h2>
+                 <p class="text-sm text-gray-600 mb-4">
+                    ข้าพเจ้ายินยอมให้บริษัท อลิอันซ์ อยุธยา ประกันชีวิต จำกัด (มหาชน) และตัวแทนประกันชีวิต เก็บรวบรวม ใช้ และเปิดเผยข้อมูลส่วนบุคคลของข้าพเจ้าที่ระบุในแบบฟอร์มนี้ เพื่อวัตถุประสงค์ในการพิจารณาคำขอเอาประกันชีวิต การออกกรมธรรม์ การเรียกร้องสินไหมทดแทน และการให้บริการอื่น ๆ ที่เกี่ยวข้องกับการประกันภัย
+                 </p>
+                 <div class="checkbox-option bg-blue-50 border-blue-200">
+                    <input type="checkbox" id="pdpa_consent" required>
+                    <label for="pdpa_consent" class="font-normal">ข้าพเจ้ารับทราบและให้ความยินยอมตามข้อตกลงข้างต้น<span class="required-star">*</span></label>
+                 </div>
+            </div>
+
+            <!-- Section 1: Personal Info -->
+            <div class="form-section">
+                <h2 class="text-xl font-bold text-gray-800 border-b pb-2 mb-6">ส่วนที่ 1: ข้อมูลผู้ขอเอาประกัน</h2>
+                
+                <div class="grid md:grid-cols-2 gap-x-6">
+                    <div class="form-question">
+                        <label for="first_name_th">ชื่อ (ภาษาไทย)<span class="required-star">*</span></label>
+                        <input type="text" id="first_name_th" placeholder="ตัวอย่าง: สมชาย" required>
+                    </div>
+                    <div class="form-question">
+                        <label for="last_name_th">นามสกุล (ภาษาไทย)<span class="required-star">*</span></label>
+                        <input type="text" id="last_name_th" placeholder="ตัวอย่าง: ใจดี" required>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-x-6">
+                    <div class="form-question">
+                        <label for="first_name_en">ชื่อ (ภาษาอังกฤษ)<span class="required-star">*</span></label>
+                        <input type="text" id="first_name_en" placeholder="ตัวอย่าง: SOMCHAI" required>
+                    </div>
+                    <div class="form-question">
+                        <label for="last_name_en">นามสกุล (ภาษาอังกฤษ)<span class="required-star">*</span></label>
+                        <input type="text" id="last_name_en" placeholder="ตัวอย่าง: JAIDEE" required>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-x-6">
+                    <div class="form-question">
+                        <label for="nationality">สัญชาติ<span class="required-star">*</span></label>
+                        <input type="text" id="nationality" placeholder="เช่น ไทย" required>
+                    </div>
+                    <div class="form-question">
+                        <label for="religion">ศาสนา</label>
+                        <input type="text" id="religion" placeholder="เช่น พุทธ">
+                    </div>
+                </div>
+                
+                <div class="form-question">
+                    <label for="dob_day">วัน/เดือน/ปีเกิด (พ.ศ.)<span class="required-star">*</span></label>
+                    <div class="grid grid-cols-3 gap-x-4">
+                        <div>
+                            <select id="dob_day" name="dob_day" required>
+                                <option value="" disabled selected>วัน</option>
+                            </select>
+                        </div>
+                        <div>
+                            <select id="dob_month" name="dob_month" required>
+                                <option value="" disabled selected>เดือน</option>
+                            </select>
+                        </div>
+                        <div>
+                            <select id="dob_year" name="dob_year" required>
+                                <option value="" disabled selected>ปี (พ.ศ.)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                 <div class="grid md:grid-cols-2 gap-x-6">
+                    <div class="form-question">
+                        <label for="id_number">เลขประจำตัวประชาชน 13 หลัก<span class="required-star">*</span></label>
+                        <input type="text" id="id_number" placeholder="กรุณาระบุโดยไม่ต้องใส่ขีด (-)" maxlength="13" required>
+                        <p id="id_number_error" class="error-message">กรุณากรอกตัวเลขให้ครบ 13 หลัก</p>
+                    </div>
+                    <div class="form-question">
+                        <label for="laser_code">เลขหลังบัตรประชาชน (Laser Code)</label>
+                        <input type="text" id="laser_code" placeholder="ตัวอย่าง: ME0-1234567-89">
+                    </div>
+                </div>
+
+                <div class="form-question">
+                    <label for="exp_day">วันหมดอายุบัตรประชาชน (พ.ศ.)<span class="required-star">*</span></label>
+                    <div class="grid grid-cols-3 gap-x-4">
+                        <div>
+                            <select id="exp_day" name="exp_day" required>
+                                <option value="" disabled selected>วัน</option>
+                            </select>
+                        </div>
+                        <div>
+                            <select id="exp_month" name="exp_month" required>
+                                <option value="" disabled selected>เดือน</option>
+                            </select>
+                        </div>
+                        <div>
+                            <select id="exp_year" name="exp_year" required>
+                                <option value="" disabled selected>ปี (พ.ศ.)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-x-6">
+                    <div class="form-question">
+                        <label for="weight">น้ำหนัก (กิโลกรัม)<span class="required-star">*</span></label>
+                        <input type="number" id="weight" placeholder="ระบุเป็นตัวเลข" required>
+                    </div>
+                    <div class="form-question">
+                        <label for="height">ส่วนสูง (เซนติเมตร)<span class="required-star">*</span></label>
+                        <input type="number" id="height" placeholder="ระบุเป็นตัวเลข" required>
+                    </div>
+                </div>
+
+                <div class="form-question">
+                    <label for="birth_province">จังหวัดที่เกิด<span class="required-star">*</span></label>
+                    <select id="birth_province" required>
+                        <option value="" disabled selected>-- กรุณาเลือกจังหวัด --</option>
+                    </select>
+                </div>
+
+                <div class="form-question">
+                    <label for="registered_address">ที่อยู่ตามทะเบียนบ้าน<span class="required-star">*</span></label>
+                    <textarea id="registered_address" rows="3" placeholder="บ้านเลขที่, ถนน, แขวง/ตำบล, เขต/อำเภอ, จังหวัด, รหัสไปรษณีย์" required></textarea>
+                </div>
+                
+                <div class="form-question">
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="use_same_address">
+                        <label for="use_same_address" class="font-normal">ที่อยู่ปัจจุบันตรงกับที่อยู่ตามทะเบียนบ้าน</label>
+                    </div>
+                </div>
+
+                <div class="form-question" id="current_address_container">
+                    <label for="current_address">ที่อยู่ปัจจุบัน<span class="required-star">*</span></label>
+                    <textarea id="current_address" rows="3" placeholder="กรุณากรอกเฉพาะกรณีที่ไม่ตรงกับที่อยู่ตามทะเบียนบ้าน"></textarea>
+                </div>
+
+                <div class="form-question">
+                    <label for="work_address">ที่อยู่สำหรับทำงาน</label>
+                    <textarea id="work_address" rows="3" placeholder="ชื่อบริษัท, ที่อยู่"></textarea>
+                </div>
+
+                <div class="form-question">
+                    <label>ท่านสะดวกให้ติดต่อตามที่อยู่ใด<span class="required-star">*</span></label>
+                    <div class="radio-option"><input type="radio" name="contact_location" value="ที่อยู่ปัจจุบัน" required> ที่อยู่ปัจจุบัน</div>
+                    <div class="radio-option"><input type="radio" name="contact_location" value="ที่อยู่ตามทะเบียนบ้าน"> ที่อยู่ตามทะเบียนบ้าน</div>
+                    <div class="radio-option"><input type="radio" name="contact_location" value="ที่อยู่ทำงาน"> ที่อยู่ทำงาน</div>
+                </div>
+            </div>
+
+            <!-- Section 2: Career Info -->
+            <div class="form-section">
+                <h2 class="text-xl font-bold text-gray-800 border-b pb-2 mb-6">ส่วนที่ 2: ข้อมูลอาชีพและการติดต่อ</h2>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="form-question">
+                        <label for="position">ตำแหน่งงานปัจจุบัน</label>
+                        <input type="text" id="position" placeholder="กรุณาระบุตำแหน่ง">
+                    </div>
+                    <div class="form-question">
+                        <label for="annual_income">รายได้ต่อปี (บาท)</label>
+                        <input type="number" id="annual_income" placeholder="ระบุเป็นตัวเลข ไม่ต้องใส่จุลภาค">
+                    </div>
+                </div>
+
+                <div class="form-question">
+                    <label for="job_description">กรุณาอธิบายลักษณะงานโดยสังเขป</label>
+                    <textarea id="job_description" rows="3" placeholder="คำตอบของท่าน"></textarea>
+                </div>
+
+                <div class="form-question">
+                    <label for="business_type">ประเภทธุรกิจขององค์กร</label>
+                    <textarea id="business_type" rows="3" placeholder="เช่น ค้าปลีก, เทคโนโลยี, การเงิน"></textarea>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="form-question">
+                        <label for="phone">เบอร์โทรศัพท์ (สำหรับรับ SMS)<span class="required-star">*</span></label>
+                        <input type="tel" id="phone" placeholder="ตัวอย่าง: 0812345678" required>
+                         <p id="phone_error" class="error-message">กรุณากรอกเบอร์โทรศัพท์ 10 หลัก</p>
+                    </div>
+
+                    <div class="form-question">
+                        <label for="email">อีเมล<span class="required-star">*</span></label>
+                        <input type="email" id="email" placeholder="ตัวอย่าง: example@email.com" required>
+                        <p id="email_error" class="error-message">รูปแบบอีเมลไม่ถูกต้อง</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 3: Beneficiary Info -->
+            <div class="form-section">
+                <h2 class="text-xl font-bold text-gray-800 border-b pb-2 mb-6">ส่วนที่ 3: ข้อมูลผู้รับผลประโยชน์</h2>
+
+                <h3 class="text-lg font-semibold text-gray-700 mb-4">ผู้รับผลประโยชน์ลำดับที่ 1</h3>
+                <div class="form-question">
+                    <label for="beneficiary_name_1">ชื่อ-นามสกุล<span class="required-star">*</span></label>
+                    <input type="text" id="beneficiary_name_1" name="beneficiary_name_1" placeholder="ตัวอย่าง: นางสมศรี รักดี" required>
+                </div>
+                <div class="grid md:grid-cols-2 gap-x-6">
+                    <div class="form-question">
+                        <label for="beneficiary_age_1">อายุ<span class="required-star">*</span></label>
+                        <input type="number" id="beneficiary_age_1" name="beneficiary_age_1" placeholder="ระบุเป็นตัวเลข" required>
+                    </div>
+                    <div class="form-question">
+                        <label for="beneficiary_relation_1">ความสัมพันธ์<span class="required-star">*</span></label>
+                        <input type="text" id="beneficiary_relation_1" name="beneficiary_relation_1" placeholder="เช่น มารดา, บุตร" required>
+                    </div>
+                </div>
+
+                <div id="additional-beneficiaries"></div>
+
+                <div class="form-question mt-6">
+                    <label>ท่านต้องการเพิ่มผู้รับผลประโยชน์อีกหรือไม่</label>
+                    <div class="radio-option"><input type="radio" name="add_beneficiary" value="yes"> ใช่</div>
+                    <div class="radio-option"><input type="radio" name="add_beneficiary" value="no" checked> ไม่ใช่</div>
+                </div>
+            </div>
+
+            <!-- Section 4: Health Info -->
+            <div class="form-section">
+                <h2 class="text-xl font-bold text-gray-800 border-b pb-2 mb-6">ส่วนที่ 4: ข้อมูลด้านสุขภาพ</h2>
+                
+                <div class="form-question">
+                    <label>ท่านเคยมีการเปลี่ยนแปลงชื่อ-นามสกุลหรือไม่</label>
+                    <div class="flex space-x-4">
+                        <div class="radio-option flex-1"><input type="radio" name="name_change_radio" value="no" checked> ไม่เคย</div>
+                        <div class="radio-option flex-1"><input type="radio" name="name_change_radio" value="yes"> เคย</div>
+                    </div>
+                    <div id="name_change_details" class="hidden-field mt-4">
+                        <label for="name_change_text">หากเคย กรุณาระบุชื่อ-นามสกุลเดิม</label>
+                        <input type="text" id="name_change_text" placeholder="คำตอบของท่าน">
+                    </div>
+                </div>
+
+                 <div class="form-question">
+                    <label>สถานภาพสมรส</label>
+                    <div class="flex space-x-4 mt-2">
+                        <div class="radio-option flex-1 justify-center"><input type="radio" name="marital_status" value="โสด"> โสด</div>
+                        <div class="radio-option flex-1 justify-center"><input type="radio" name="marital_status" value="สมรส"> สมรส</div>
+                        <div class="radio-option flex-1 justify-center"><input type="radio" name="marital_status" value="หย่า"> หย่า</div>
+                    </div>
+                </div>
+                
+                <div class="form-question">
+                    <label>ในช่วง 5 ปีที่ผ่านมา ท่านเคยเข้ารับการตรวจสุขภาพหรือไม่</label>
+                    <div class="flex space-x-4">
+                        <div class="radio-option flex-1"><input type="radio" name="health_check_radio" value="no" checked> ไม่เคย</div>
+                        <div class="radio-option flex-1"><input type="radio" name="health_check_radio" value="yes"> เคย</div>
+                    </div>
+                    <div id="health_check_details" class="hidden-field mt-4">
+                        <label for="health_check_text">กรุณาระบุสาเหตุที่ตรวจและผลการตรวจล่าสุด</label>
+                        <textarea id="health_check_text" rows="3" placeholder="คำตอบของท่าน"></textarea>
+                    </div>
+                </div>
+
+                <div class="form-question">
+                    <label>ท่านมีโรคประจำตัวที่ต้องเข้ารับการรักษาหรือรับประทานยาอย่างต่อเนื่องหรือไม่</label>
+                    <div class="flex space-x-4">
+                        <div class="radio-option flex-1"><input type="radio" name="chronic_disease_radio" value="no" checked> ไม่เคย</div>
+                        <div class="radio-option flex-1"><input type="radio" name="chronic_disease_radio" value="yes"> เคย</div>
+                    </div>
+                    <div id="chronic_disease_details" class="hidden-field mt-4">
+                        <label for="chronic_disease_text">หากมี กรุณาระบุโรคและสถานพยาบาลที่เข้ารับการรักษา</label>
+                        <textarea id="chronic_disease_text" rows="3" placeholder="คำตอบของท่าน"></textarea>
+                    </div>
+                </div>
+
+                <div class="form-question">
+                    <label>ในช่วง 5 ปีที่ผ่านมา ท่านเคยเข้ารับการรักษาในโรงพยาบาลในฐานะผู้ป่วยใน (Admit) หรือไม่</label>
+                    <div class="flex space-x-4">
+                        <div class="radio-option flex-1"><input type="radio" name="hospitalized_radio" value="no" checked> ไม่เคย</div>
+                        <div class="radio-option flex-1"><input type="radio" name="hospitalized_radio" value="yes"> เคย</div>
+                    </div>
+                    <div id="hospitalized_details" class="hidden-field mt-4">
+                        <label for="hospitalized_text">หากเคย กรุณาระบุสาเหตุ</label>
+                        <textarea id="hospitalized_text" rows="3" placeholder="คำตอบของท่าน"></textarea>
+                    </div>
+                </div>
+
+                <div class="form-question">
+                    <label>บุคคลในครอบครัว (บิดา, มารดา, พี่น้อง) มีประวัติโรคประจำตัวหรือไม่</label>
+                    <div class="flex space-x-4">
+                        <div class="radio-option flex-1"><input type="radio" name="family_history_radio" value="no" checked> ไม่เคย</div>
+                        <div class="radio-option flex-1"><input type="radio" name="family_history_radio" value="yes"> เคย</div>
+                    </div>
+                    <div id="family_history_details" class="hidden-field mt-4">
+                        <label for="family_history_text">กรุณาระบุ</label>
+                        <textarea id="family_history_text" rows="3" placeholder="คำตอบของท่าน"></textarea>
+                    </div>
+                </div>
+
+                <div class="form-question">
+                    <label>ท่านต้องการแจ้งข้อมูลด้านสุขภาพอื่นๆ เพิ่มเติมหรือไม่</label>
+                     <div class="flex space-x-4">
+                        <div class="radio-option flex-1"><input type="radio" name="additional_health_info_radio" value="no" checked> ไม่ต้องการ</div>
+                        <div class="radio-option flex-1"><input type="radio" name="additional_health_info_radio" value="yes"> ต้องการ</div>
+                    </div>
+                    <div id="additional_health_info_details" class="hidden-field mt-4">
+                        <label for="additional_health_info_text">กรุณาระบุข้อมูลเพิ่มเติม</label>
+                        <textarea id="additional_health_info_text" rows="3" placeholder="คำตอบของท่าน"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="flex justify-end items-center mt-8">
+                <button type="submit" id="submit-button" class="submit-btn text-white font-bold py-3 px-8 rounded-md text-lg">ส่งข้อมูล</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Modal for submission -->
+    <div id="success-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+        <div class="bg-white p-8 rounded-lg shadow-xl text-center max-w-sm mx-auto">
+            <h3 class="text-2xl font-bold text-green-600 mb-4">ส่งข้อมูลของท่านเรียบร้อยแล้ว</h3>
+            <p class="text-gray-700 mb-6">ขอขอบพระคุณสำหรับข้อมูลของท่าน ทางตัวแทนจะดำเนินการติดต่อกลับโดยเร็วที่สุด</p>
+            <button id="close-modal" class="bg-[#003781] text-white font-bold py-2 px-6 rounded-md hover:bg-[#002b65]">ปิด</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const daySelect = document.getElementById('dob_day');
+            const monthSelect = document.getElementById('dob_month');
+            const yearSelect = document.getElementById('dob_year');
+            const expDaySelect = document.getElementById('exp_day');
+            const expMonthSelect = document.getElementById('exp_month');
+            const expYearSelect = document.getElementById('exp_year');
+
+            const months = ["มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน", "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม"];
+            
+            // Populate Day and Month Dropdowns
+            for (let i = 1; i <= 31; i++) {
+                const dayOption = document.createElement('option');
+                dayOption.value = i;
+                dayOption.textContent = i;
+                daySelect.appendChild(dayOption);
+                expDaySelect.appendChild(dayOption.cloneNode(true));
+            }
+            months.forEach((month, index) => {
+                const monthOption = document.createElement('option');
+                monthOption.value = index + 1;
+                monthOption.textContent = month;
+                monthSelect.appendChild(monthOption);
+                expMonthSelect.appendChild(monthOption.cloneNode(true));
+            });
+
+            // Populate Year Dropdowns
+            const currentBEYear = new Date().getFullYear() + 543;
+            // DOB Year (Ages 1-65)
+            for (let i = currentBEYear - 1; i >= currentBEYear - 65; i--) {
+                const yearOption = document.createElement('option');
+                yearOption.value = i;
+                yearOption.textContent = i;
+                yearSelect.appendChild(yearOption);
+            }
+            // Expiry Year (Next 10 years)
+            for (let i = currentBEYear; i <= currentBEYear + 10; i++) {
+                const yearOption = document.createElement('option');
+                yearOption.value = i;
+                yearOption.textContent = i;
+                expYearSelect.appendChild(yearOption);
+            }
+
+            // --- Province List ---
+            const provinces = ["กรุงเทพมหานคร", "กระบี่", "กาญจนบุรี", "กาฬสินธุ์", "กำแพงเพชร", "ขอนแก่น", "จันทบุรี", "ฉะเชิงเทรา", "ชลบุรี", "ชัยนาท", "ชัยภูมิ", "ชุมพร", "เชียงราย", "เชียงใหม่", "ตรัง", "ตราด", "ตาก", "นครนายก", "นครปฐม", "นครพนม", "นครราชสีมา", "นครศรีธรรมราช", "นครสวรรค์", "นนทบุรี", "นราธิวาส", "น่าน", "บึงกาฬ", "บุรีรัมย์", "ปทุมธานี", "ประจวบคีรีขันธ์", "ปราจีนบุรี", "ปัตตานี", "พระนครศรีอยุธยา", "พะเยา", "พังงา", "พัทลุง", "พิจิตร", "พิษณุโลก", "เพชรบุรี", "เพชรบูรณ์", "แพร่", "ภูเก็ต", "มหาสารคาม", "มุกดาหาร", "แม่ฮ่องสอน", "ยโสธร", "ยะลา", "ร้อยเอ็ด", "ระนอง", "ระยอง", "ราชบุรี", "ลพบุรี", "ลำปาง", "ลำพูน", "เลย", "ศรีสะเกษ", "สกลนคร", "สงขลา", "สตูล", "สมุทรปราการ", "สมุทรสงคราม", "สมุทรสาคร", "สระแก้ว", "สระบุรี", "สิงห์บุรี", "สุโขทัย", "สุพรรณบุรี", "สุราษฎร์ธานี", "สุรินทร์", "หนองคาย", "หนองบัวลำภู", "อ่างทอง", "อำนาจเจริญ", "อุดรธานี", "อุตรดิตถ์", "อุทัยธานี", "อุบลราชธานี"];
+            const provinceSelect = document.getElementById('birth_province');
+            provinces.forEach(p => {
+                const option = document.createElement('option');
+                option.value = p;
+                option.textContent = p;
+                provinceSelect.appendChild(option);
+            });
+
+            // --- PDPA Consent Logic ---
+            const pdpaCheckbox = document.getElementById('pdpa_consent');
+            const submitButton = document.getElementById('submit-button');
+            submitButton.disabled = true;
+            pdpaCheckbox.addEventListener('change', () => {
+                submitButton.disabled = !pdpaCheckbox.checked;
+            });
+
+            // --- Conditional Fields Logic ---
+            function setupConditionalField(radioGroupName, detailsContainerId) {
+                const radios = document.querySelectorAll(`input[name="${radioGroupName}"]`);
+                const detailsContainer = document.getElementById(detailsContainerId);
+                radios.forEach(radio => {
+                    radio.addEventListener('change', (e) => {
+                        if (e.target.value === 'yes') {
+                            detailsContainer.style.display = 'block';
+                        } else {
+                            detailsContainer.style.display = 'none';
+                            // Clear textarea value when hiding
+                            const textarea = detailsContainer.querySelector('textarea, input[type="text"]');
+                            if(textarea) textarea.value = '';
+                        }
+                    });
+                });
+            }
+
+            setupConditionalField('name_change_radio', 'name_change_details');
+            setupConditionalField('health_check_radio', 'health_check_details');
+            setupConditionalField('chronic_disease_radio', 'chronic_disease_details');
+            setupConditionalField('hospitalized_radio', 'hospitalized_details');
+            setupConditionalField('family_history_radio', 'family_history_details');
+            setupConditionalField('additional_health_info_radio', 'additional_health_info_details');
+
+
+            // --- Conditional Current Address Field ---
+            const useSameAddressCheckbox = document.getElementById('use_same_address');
+            const currentAddressContainer = document.getElementById('current_address_container');
+            const currentAddressTextarea = document.getElementById('current_address');
+            useSameAddressCheckbox.checked = false;
+            currentAddressContainer.classList.remove('hidden-field');
+            currentAddressTextarea.required = true;
+            useSameAddressCheckbox.addEventListener('change', (e) => {
+                if (e.target.checked) {
+                    currentAddressContainer.classList.add('hidden-field');
+                    currentAddressTextarea.required = false;
+                    currentAddressTextarea.value = '';
+                } else {
+                    currentAddressContainer.classList.remove('hidden-field');
+                    currentAddressTextarea.required = true;
+                }
+            });
+
+            // --- Add Beneficiary Logic ---
+            const addBeneficiaryRadios = document.querySelectorAll('input[name="add_beneficiary"]');
+            const additionalBeneficiariesContainer = document.getElementById('additional-beneficiaries');
+            let beneficiaryCount = 1;
+            addBeneficiaryRadios.forEach(radio => {
+                radio.addEventListener('change', (event) => {
+                    if (event.target.value === 'yes') {
+                        beneficiaryCount++;
+                        const newBeneficiaryField = document.createElement('div');
+                        newBeneficiaryField.classList.add('mt-6', 'pt-6', 'border-t');
+                        newBeneficiaryField.innerHTML = `
+                            <h3 class="text-lg font-semibold text-gray-700 mb-4">ผู้รับผลประโยชน์ลำดับที่ ${beneficiaryCount}</h3>
+                            <div class="form-question">
+                                <label for="beneficiary_name_${beneficiaryCount}">ชื่อ-นามสกุล</label>
+                                <input type="text" id="beneficiary_name_${beneficiaryCount}" name="beneficiary_name_${beneficiaryCount}" placeholder="กรุณาระบุชื่อ-นามสกุล">
+                            </div>
+                            <div class="grid md:grid-cols-2 gap-x-6">
+                                <div class="form-question">
+                                    <label for="beneficiary_age_${beneficiaryCount}">อายุ</label>
+                                    <input type="number" id="beneficiary_age_${beneficiaryCount}" name="beneficiary_age_${beneficiaryCount}" placeholder="ระบุเป็นตัวเลข">
+                                </div>
+                                <div class="form-question">
+                                    <label for="beneficiary_relation_${beneficiaryCount}">ความสัมพันธ์</label>
+                                    <input type="text" id="beneficiary_relation_${beneficiaryCount}" name="beneficiary_relation_${beneficiaryCount}" placeholder="เช่น มารดา, บุตร">
+                                </div>
+                            </div>
+                        `;
+                        additionalBeneficiariesContainer.appendChild(newBeneficiaryField);
+                        document.querySelector('input[name="add_beneficiary"][value="no"]').checked = true;
+                    }
+                });
+            });
+
+            // --- Real-time Validation ---
+            const idNumberInput = document.getElementById('id_number');
+            const idNumberError = document.getElementById('id_number_error');
+            const phoneInput = document.getElementById('phone');
+            const phoneError = document.getElementById('phone_error');
+            const emailInput = document.getElementById('email');
+            const emailError = document.getElementById('email_error');
+
+            const validate = (input, errorElement, condition, message) => {
+                if (condition) {
+                    input.classList.remove('invalid');
+                    errorElement.style.display = 'none';
+                    return true;
+                } else {
+                    input.classList.add('invalid');
+                    errorElement.textContent = message;
+                    errorElement.style.display = 'block';
+                    return false;
+                }
+            };
+            
+            idNumberInput.addEventListener('input', () => {
+                const value = idNumberInput.value;
+                validate(idNumberInput, idNumberError, /^\d{13}$/.test(value), 'กรุณากรอกตัวเลขให้ครบ 13 หลัก');
+            });
+
+            phoneInput.addEventListener('input', () => {
+                const value = phoneInput.value;
+                 validate(phoneInput, phoneError, /^\d{10}$/.test(value), 'กรุณากรอกเบอร์โทรศัพท์ 10 หลัก');
+            });
+
+            emailInput.addEventListener('blur', () => { // Validate on blur for better UX
+                const value = emailInput.value;
+                if(value) { // Only validate if not empty
+                    validate(emailInput, emailError, /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value), 'รูปแบบอีเมลไม่ถูกต้อง');
+                } else {
+                    emailInput.classList.remove('invalid');
+                    emailError.style.display = 'none';
+                }
+            });
+
+
+            // --- Form Submission Logic ---
+            const form = document.getElementById('data-form');
+            const successModal = document.getElementById('success-modal');
+            const SCRIPT_URL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE'; // <-- PASTE YOUR URL HERE
+
+            const getConditionalValue = (radioGroupName, textInputId) => {
+                const selected = document.querySelector(`input[name="${radioGroupName}"]:checked`);
+                if (selected && selected.value === 'yes') {
+                    return document.getElementById(textInputId).value || 'เคย (ไม่ได้ระบุรายละเอียด)';
+                }
+                return 'ไม่เคย';
+            };
+
+            form.addEventListener('submit', (event) => {
+                event.preventDefault();
+
+                // Trigger all validations before submitting
+                let isIdValid = validate(idNumberInput, idNumberError, /^\d{13}$/.test(idNumberInput.value), 'กรุณากรอกตัวเลขให้ครบ 13 หลัก');
+                let isPhoneValid = validate(phoneInput, phoneError, /^\d{10}$/.test(phoneInput.value), 'กรุณากรอกเบอร์โทรศัพท์ 10 หลัก');
+                let isEmailValid = emailInput.value ? validate(emailInput, emailError, /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value), 'รูปแบบอีเมลไม่ถูกต้อง') : true;
+
+                if (!form.checkValidity() || !isIdValid || !isPhoneValid || !isEmailValid) {
+                    const firstInvalid = form.querySelector(':invalid, .invalid');
+                    if(firstInvalid) firstInvalid.focus();
+                    return;
+                }
+                
+                if (!pdpaCheckbox.checked) {
+                    alert('กรุณายินยอมในข้อตกลงการเปิดเผยข้อมูลก่อนส่งข้อมูล');
+                    return;
+                }
+                
+                submitButton.disabled = true;
+                submitButton.textContent = 'กำลังส่งข้อมูล...';
+
+                // Collect Beneficiaries Data
+                const beneficiaries = [];
+                for(let i = 1; i <= beneficiaryCount; i++) {
+                    const nameEl = document.getElementById(`beneficiary_name_${i}`);
+                    const ageEl = document.getElementById(`beneficiary_age_${i}`);
+                    const relationEl = document.getElementById(`beneficiary_relation_${i}`);
+                    if (nameEl && ageEl && relationEl && nameEl.value) {
+                        beneficiaries.push({ name: nameEl.value, age: ageEl.value, relation: relationEl.value });
+                    }
+                }
+
+                // Construct Data Object
+                const formData = {
+                    firstNameTh: document.getElementById('first_name_th').value,
+                    lastNameTh: document.getElementById('last_name_th').value,
+                    firstNameEn: document.getElementById('first_name_en').value,
+                    lastNameEn: document.getElementById('last_name_en').value,
+                    nationality: document.getElementById('nationality').value,
+                    religion: document.getElementById('religion').value,
+                    dob: `${daySelect.value}/${monthSelect.value}/${yearSelect.value}`,
+                    idNumber: idNumberInput.value,
+                    laserCode: document.getElementById('laser_code').value,
+                    cardExpiryDate: `${expDaySelect.value}/${expMonthSelect.value}/${expYearSelect.value}`,
+                    weight: document.getElementById('weight').value,
+                    height: document.getElementById('height').value,
+                    birthProvince: document.getElementById('birth_province').value,
+                    registeredAddress: document.getElementById('registered_address').value,
+                    currentAddress: useSameAddressCheckbox.checked ? document.getElementById('registered_address').value : currentAddressTextarea.value,
+                    workAddress: document.getElementById('work_address').value,
+                    contactLocation: document.querySelector('input[name="contact_location"]:checked')?.value || '',
+                    position: document.getElementById('position').value,
+                    annualIncome: document.getElementById('annual_income').value,
+                    jobDescription: document.getElementById('job_description').value,
+                    businessType: document.getElementById('business_type').value,
+                    phone: phoneInput.value,
+                    email: emailInput.value,
+                    beneficiaries: JSON.stringify(beneficiaries),
+                    nameChange: getConditionalValue('name_change_radio', 'name_change_text'),
+                    maritalStatus: document.querySelector('input[name="marital_status"]:checked')?.value || '',
+                    healthCheck: getConditionalValue('health_check_radio', 'health_check_text'),
+                    chronicDisease: getConditionalValue('chronic_disease_radio', 'chronic_disease_text'),
+                    hospitalized: getConditionalValue('hospitalized_radio', 'hospitalized_text'),
+                    familyHistory: getConditionalValue('family_history_radio', 'family_history_text'),
+                    additionalHealthInfo: getConditionalValue('additional_health_info_radio', 'additional_health_info_text'),
+                };
+
+                fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    body: JSON.stringify(formData)
+                })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data);
+                    successModal.classList.remove('hidden');
+                    form.reset();
+                })
+                .catch(error => {
+                    console.error('Error!', error.message);
+                    alert('เกิดข้อผิดพลาดในการส่งข้อมูล กรุณาลองใหม่อีกครั้ง');
+                })
+                .finally(() => {
+                    submitButton.disabled = false;
+                    submitButton.textContent = 'ส่งข้อมูล';
+                });
+            });
+
+            form.addEventListener('reset', () => {
+                // Clear all fields and reset states
+                additionalBeneficiariesContainer.innerHTML = '';
+                beneficiaryCount = 1;
+                pdpaCheckbox.checked = false;
+                submitButton.disabled = true;
+                
+                // Reset all conditional fields
+                ['name_change_details', 'health_check_details', 'chronic_disease_details', 'hospitalized_details', 'family_history_details', 'additional_health_info_details'].forEach(id => {
+                    document.getElementById(id).style.display = 'none';
+                });
+                ['name_change_radio', 'health_check_radio', 'chronic_disease_radio', 'hospitalized_radio', 'family_history_radio', 'additional_health_info_radio'].forEach(name => {
+                    const radio = document.querySelector(`input[name="${name}"][value="no"]`);
+                    if (radio) radio.checked = true;
+                });
+
+                useSameAddressCheckbox.checked = false;
+                currentAddressContainer.classList.remove('hidden-field');
+                currentAddressTextarea.required = true;
+
+                // Clear validation states
+                [idNumberInput, phoneInput, emailInput].forEach(input => {
+                    input.classList.remove('invalid');
+                    const errorEl = document.getElementById(`${input.id}_error`);
+                    if(errorEl) errorEl.style.display = 'none';
+                });
+            });
+            const closeModalButton = document.getElementById('close-modal');
+            closeModalButton.addEventListener('click', () => {
+                successModal.classList.add('hidden');
+            });
+            successModal.addEventListener('click', (event) => {
+                if (event.target === successModal) {
+                    successModal.classList.add('hidden');
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
